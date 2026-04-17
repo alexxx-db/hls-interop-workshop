@@ -16,6 +16,9 @@ Updated for **Databricks Runtime 15.x+**, **Unity Catalog**, and **Serverless co
 | `genie_space.py` | Genie space | AI/BI Genie natural-language interface with instructions and sample questions |
 | `deploy_app.py` | App deployment | Deploys the Streamlit Databricks App |
 | `app/app.py` | Streamlit app | 6-page interactive app: overview, CCDA, FHIR/OMOP, HL7, UC functions, data quality |
+| `deploy_gradio_app.py` | App deployment | Deploys the Gradio Databricks App |
+| `gradio_app/app.py` | Gradio app | 6-tab interactive app (same content as Streamlit, Gradio component model) |
+| `agent_bricks.py` | Agent Bricks | Creates Genie Space + Knowledge Assistant + Supervisor Agent with UC function tools |
 | `RUNME.py` | Orchestrator | Creates a serverless Workflow to run all notebooks |
 
 ## Prerequisites
