@@ -1,0 +1,12 @@
+command:
+  - python
+  - app.py
+
+env:
+  - name: CATALOG
+    value: "hls_workshop"
+
+resources:
+  - name: sql-warehouse
+    sql_warehouse:
+      permission: CAN_USE
