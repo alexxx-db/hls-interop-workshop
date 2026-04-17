@@ -11,6 +11,9 @@ Updated for **Databricks Runtime 15.x+**, **Unity Catalog**, and **Serverless co
 | `file.py` | File-based ingestion | Load CDA/CCDA XML clinical documents, extract medications |
 | `fhir.py` | FHIR to OMOP | Transform FHIR Bundles to OMOP CDM using dbignite |
 | `hl7.py` | HL7v2 parsing | Parse HL7v2 ADT messages using Python, write to Delta |
+| `uc_functions.py` | UC functions | Registers reusable SQL functions (code lookups, risk tiers, validation) |
+| `dashboard.py` | Dashboard | AI/BI (Lakeview) dashboard tile definitions across all 4 patterns |
+| `genie_space.py` | Genie space | AI/BI Genie natural-language interface with instructions and sample questions |
 | `RUNME.py` | Orchestrator | Creates a serverless Workflow to run all notebooks |
 
 ## Prerequisites
