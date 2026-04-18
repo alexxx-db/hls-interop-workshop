@@ -1,0 +1,18 @@
+# Core dependencies (pre-installed on Databricks Runtime 15.x+)
+pyspark>=3.5
+
+# Notebook-specific dependencies
+python-hl7>=0.4.5              # hl7.py — HL7v2 message parsing
+dbignite>=0.2.4                # fhir.py — FHIR-to-OMOP transformation (install from wheel)
+
+# Workspace library (Maven, not pip — install via cluster/workspace UI)
+# com.databricks:spark-xml_2.12:0.17.0   # file.py — CCDA XML parsing
+
+# App dependencies (also in app/requirements.txt and gradio_app/requirements.txt)
+streamlit>=1.30.0              # app/ — Streamlit Databricks App
+gradio>=4.20.0                 # gradio_app/ — Gradio Databricks App
+databricks-sql-connector>=3.0.0
+pandas>=2.0.0
+
+# Deployment / orchestration
+databricks-sdk>=0.30.0         # RUNME.py, deploy_app.py, genie_space.py, agent_bricks.py
