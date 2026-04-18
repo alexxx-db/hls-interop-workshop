@@ -1,7 +1,14 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "1"
+# dependencies = [
+#   "python-hl7",
+# ]
+# ///
+# COMPUTE: Serverless
+
 # MAGIC %md
-# MAGIC # COMPUTE: Serverless
-# MAGIC
 # MAGIC # HL7v2 ADT Message Parsing
 # MAGIC
 # MAGIC Demonstrates parsing HL7v2 ADT messages using Python. The original workshop used
@@ -13,14 +20,9 @@
 # MAGIC the segment structure, and extracts patient and diagnosis information into a Delta table.
 # MAGIC
 # MAGIC **Synthetic data only — no PHI.**
-
-# COMMAND ----------
-
-# MAGIC %pip install python-hl7 --quiet
-
-# COMMAND ----------
-
-dbutils.library.restartPython()
+# MAGIC
+# MAGIC **Library dependencies** are declared in the environment header above — Serverless
+# MAGIC compute installs them automatically. No `%pip install` needed.
 
 # COMMAND ----------
 

@@ -15,8 +15,11 @@
 # MAGIC **Prerequisites:**
 # MAGIC 1. Serverless compute enabled in the workspace
 # MAGIC 2. Unity Catalog enabled
-# MAGIC 3. `spark-xml` Maven library installed (for `file.py`)
-# MAGIC 4. `dbignite` wheel installed as workspace library (for `fhir.py`)
+# MAGIC 3. `spark-xml` Maven library installed as workspace library (for `file.py`)
+# MAGIC
+# MAGIC Library dependencies (`python-hl7`, `dbignite`) are declared in each notebook's
+# MAGIC environment header and in the Workflow's `environments` spec below — Serverless
+# MAGIC installs them automatically.
 
 # COMMAND ----------
 
@@ -84,7 +87,10 @@ else:
                 "environment_key": "workshop_env",
                 "spec": {
                     "client": "1",
-                    "dependencies": ["python-hl7"],
+                    "dependencies": [
+                        "python-hl7",
+                        "dbignite @ https://github.com/alexxx-db/dbignite/releases/latest/download/dbignite-latest-py3-none-any.whl",
+                    ],
                 },
             }],
             "tags": {"workshop": "hls-interop", "compute": "serverless"},

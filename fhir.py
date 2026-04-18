@@ -1,17 +1,24 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "1"
+# dependencies = [
+#   "dbignite @ https://github.com/alexxx-db/dbignite/releases/latest/download/dbignite-latest-py3-none-any.whl",
+# ]
+# ///
+# COMPUTE: Serverless
+
 # MAGIC %md
-# MAGIC # COMPUTE: Serverless
-# MAGIC
 # MAGIC # FHIR to OMOP Transformation
 # MAGIC
 # MAGIC Transforms FHIR R4 Bundles into the OMOP Common Data Model using the `dbignite`
 # MAGIC library. Then builds chronic condition feature indicators (diabetes, hypertension,
 # MAGIC substance use) as a gold-layer table for analytics.
 # MAGIC
-# MAGIC **Prerequisite:** Install `dbignite` as a workspace library before running.
-# MAGIC Upload the wheel from `alexxx-db/dbignite` `dist/dbignite-0.2.4-py3-none-any.whl`.
-# MAGIC
 # MAGIC **Synthetic data only — no PHI.**
+# MAGIC
+# MAGIC **Library dependencies** are declared in the environment header above — Serverless
+# MAGIC compute installs `dbignite` automatically from the GitHub release.
 # MAGIC
 # MAGIC ![FHIR logo](https://www.hl7.org/fhir/assets/images/fhir-logo-www.png)
 
