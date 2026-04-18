@@ -1,7 +1,8 @@
 # Databricks notebook source
-# COMPUTE: Serverless
-
 # MAGIC %md
+# MAGIC # COMPUTE: Serverless
+# MAGIC
+# MAGIC
 # MAGIC # Unity Catalog Functions for Healthcare Interoperability
 # MAGIC
 # MAGIC Registers reusable SQL and Python UDFs in Unity Catalog. These functions

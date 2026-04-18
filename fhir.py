@@ -1,7 +1,7 @@
 # Databricks notebook source
-# COMPUTE: Serverless
-
 # MAGIC %md
+# MAGIC # COMPUTE: Serverless
+# MAGIC
 # MAGIC # FHIR to OMOP Transformation
 # MAGIC
 # MAGIC Transforms FHIR R4 Bundles into the OMOP Common Data Model using the `dbignite`

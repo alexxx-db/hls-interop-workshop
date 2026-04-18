@@ -1,7 +1,7 @@
 # Databricks notebook source
-# COMPUTE: Serverless
-
 # MAGIC %md
+# MAGIC # COMPUTE: Serverless
+# MAGIC
 # MAGIC # Healthcare Interoperability Workshop — Agent Bricks
 # MAGIC
 # MAGIC Creates three Agent Bricks and one Supervisor Agent that ties them together:

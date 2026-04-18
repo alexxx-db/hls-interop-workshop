@@ -1,7 +1,7 @@
 # Databricks notebook source
-# COMPUTE: Serverless SQL Warehouse
-
 # MAGIC %md
+# MAGIC # COMPUTE: Serverless SQL Warehouse
+# MAGIC
 # MAGIC # Healthcare Interoperability Workshop — Dashboard
 # MAGIC
 # MAGIC Creates an AI/BI (Lakeview) dashboard summarizing the data produced by the four

@@ -1,7 +1,7 @@
 # Databricks notebook source
-# COMPUTE: Serverless
-
 # MAGIC %md
+# MAGIC # COMPUTE: Serverless
+# MAGIC
 # MAGIC # File-Based Ingestion: CDA/CCDA XML Documents
 # MAGIC
 # MAGIC Demonstrates loading clinical XML documents (CDA/CCDA format) from a Unity Catalog

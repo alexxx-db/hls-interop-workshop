@@ -1,7 +1,7 @@
 # Databricks notebook source
-# COMPUTE: Serverless
-
 # MAGIC %md
+# MAGIC # COMPUTE: Serverless
+# MAGIC
 # MAGIC # Healthcare Interoperability Workshop — Genie Space
 # MAGIC
 # MAGIC Creates an AI/BI Genie space that lets users ask natural-language questions

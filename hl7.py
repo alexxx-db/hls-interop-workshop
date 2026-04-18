@@ -1,7 +1,7 @@
 # Databricks notebook source
-# COMPUTE: Serverless
-
 # MAGIC %md
+# MAGIC # COMPUTE: Serverless
+# MAGIC
 # MAGIC # HL7v2 ADT Message Parsing
 # MAGIC
 # MAGIC Demonstrates parsing HL7v2 ADT messages using Python. The original workshop used
