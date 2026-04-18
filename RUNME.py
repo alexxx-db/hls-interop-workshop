@@ -1,4 +1,11 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "1"
+# dependencies = [
+#   "spark-xml",
+# ]
+# ///
 # MAGIC %md
 # MAGIC # Healthcare Interoperability Workshop — Setup & Orchestration
 # MAGIC
@@ -13,22 +20,14 @@
 
 # COMMAND ----------
 
-import json
-
-nb_context = json.loads(
-    dbutils.notebook.entry_point.getDbutils().notebook().getContext().toJson()
-)
-notebook_dir = "/".join(nb_context["extraContext"]["notebook_path"].split("/")[:-1])
+context = dbutils.notebook.entry_point.getDbutils().notebook().getContext()
+notebook_path = context.notebookPath().get()
+notebook_dir = "/".join(notebook_path.split("/")[:-1])
 
 # COMMAND ----------
 
 # DBTITLE 1,Workflow Definition
 from databricks.sdk import WorkspaceClient
-from databricks.sdk.service.jobs import (
-    Task,
-    NotebookTask,
-    RunIf,
-)
 
 w = WorkspaceClient()
 
@@ -36,38 +35,38 @@ job_name = "hls_interop_workshop"
 catalog_param = {"catalog": "hls_workshop"}
 
 tasks = [
-    Task(
-        task_key="jdbc_ingestion",
-        notebook_task=NotebookTask(
-            notebook_path=f"{notebook_dir}/jdbc",
-            base_parameters=catalog_param,
-        ),
-        environment_key="workshop_env",
-    ),
-    Task(
-        task_key="file_ingestion",
-        notebook_task=NotebookTask(
-            notebook_path=f"{notebook_dir}/file",
-            base_parameters=catalog_param,
-        ),
-        environment_key="workshop_env",
-    ),
-    Task(
-        task_key="fhir_to_omop",
-        notebook_task=NotebookTask(
-            notebook_path=f"{notebook_dir}/fhir",
-            base_parameters=catalog_param,
-        ),
-        environment_key="workshop_env",
-    ),
-    Task(
-        task_key="hl7_parsing",
-        notebook_task=NotebookTask(
-            notebook_path=f"{notebook_dir}/hl7",
-            base_parameters=catalog_param,
-        ),
-        environment_key="workshop_env",
-    ),
+    {
+        "task_key": "jdbc_ingestion",
+        "notebook_task": {
+            "notebook_path": f"{notebook_dir}/jdbc",
+            "base_parameters": catalog_param,
+        },
+        "environment_key": "workshop_env",
+    },
+    {
+        "task_key": "file_ingestion",
+        "notebook_task": {
+            "notebook_path": f"{notebook_dir}/file",
+            "base_parameters": catalog_param,
+        },
+        "environment_key": "workshop_env",
+    },
+    {
+        "task_key": "fhir_to_omop",
+        "notebook_task": {
+            "notebook_path": f"{notebook_dir}/fhir",
+            "base_parameters": catalog_param,
+        },
+        "environment_key": "workshop_env",
+    },
+    {
+        "task_key": "hl7_parsing",
+        "notebook_task": {
+            "notebook_path": f"{notebook_dir}/hl7",
+            "base_parameters": catalog_param,
+        },
+        "environment_key": "workshop_env",
+    },
 ]
 
 # Check if job exists
@@ -75,19 +74,23 @@ existing = [j for j in w.jobs.list(name=job_name)]
 if existing:
     print(f"Job '{job_name}' already exists: {existing[0].job_id}")
 else:
-    job = w.jobs.create(
-        name=job_name,
-        tasks=tasks,
-        environments=[{
-            "environment_key": "workshop_env",
-            "spec": {
-                "client": "1",
-                "dependencies": ["python-hl7"],
-            },
-        }],
-        tags={"workshop": "hls-interop", "compute": "serverless"},
+    result = w.api_client.do(
+        "POST",
+        "/api/2.1/jobs/create",
+        body={
+            "name": job_name,
+            "tasks": tasks,
+            "environments": [{
+                "environment_key": "workshop_env",
+                "spec": {
+                    "client": "1",
+                    "dependencies": ["python-hl7"],
+                },
+            }],
+            "tags": {"workshop": "hls-interop", "compute": "serverless"},
+        },
     )
-    print(f"Created job '{job_name}': {job.job_id}")
+    print(f"Created job '{job_name}': {result['job_id']}")
 
 # COMMAND ----------
 

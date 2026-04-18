@@ -1,7 +1,7 @@
 # Databricks notebook source
-# COMPUTE: Serverless
-
 # MAGIC %md
+# MAGIC # COMPUTE: Serverless
+# MAGIC
 # MAGIC # Deploy Workshop Streamlit App
 # MAGIC
 # MAGIC Deploys the Healthcare Interoperability Workshop as a Databricks App (Streamlit).
