@@ -1,14 +1,14 @@
 # Databricks notebook source
-# COMPUTE: Serverless
-
-# MAGIC %md
+# MAGIC %md 
+# MAGIC # COMPUTE: Serverless
+# MAGIC
 # MAGIC # JDBC Ingestion Pattern
 # MAGIC
 # MAGIC Demonstrates transferring tables from an external JDBC source into Unity Catalog
 # MAGIC managed tables with audit logging. Designed for self-service: a small analytics
 # MAGIC team can onboard new data sources without custom ETL code.
 # MAGIC
-# MAGIC **Synthetic data only — no PHI.**
+# MAGIC **Synthetic data only - no PHI.**
 
 # COMMAND ----------
 
